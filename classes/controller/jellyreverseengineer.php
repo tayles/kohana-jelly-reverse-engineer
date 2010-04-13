@@ -160,7 +160,7 @@ class Controller_JellyReverseEngineer extends Controller {
 				else {
 					// check for foreign keys
 					if( $foreign_key_check_mode == 'guess' ) {
-						if( $prefix = Text::is_or_ends_with($field->name, 'id') ) {
+						if( $prefix = StringManip::is_or_ends_with($field->name, 'id') ) {
 							$matched_table = null;
 							if( in_array( $prefix, $tables ) ) $matched_table = $prefix;
 							else if( in_array( Inflector::plural($prefix), $tables ) ) $matched_table = Inflector::plural($prefix);
@@ -207,29 +207,29 @@ class Controller_JellyReverseEngineer extends Controller {
 				}
 				
 				// attempt to map email fields to the correct field type (Jelly_Field_Email)
-				if( Text::is_or_ends_with($field->name, 'email') ) {
+				if( StringManip::is_or_ends_with($field->name, 'email') ) {
 					$field->type = 'Email';
 				}
 				
 				// using Text classname instead of Text, as subclassing Text in a module didn't seem to work (possibly a bug?)
-				if( Text::is_or_ends_with($field->name, array('url','website') ) ) {
+				if( StringManip::is_or_ends_with($field->name, array('url','website') ) ) {
 					$field->rules['url'] = NULL;
 				}
 				
-				if( Text::is_or_ends_with($field->name, array('ip','ipaddress','ip_address') ) ) {
+				if( StringManip::is_or_ends_with($field->name, array('ip','ipaddress','ip_address') ) ) {
 					$field->rules['ip'] = NULL;
 				}
 				
-				if( Text::is_or_ends_with($field->name, array('telephone', 'tel', 'phone') ) ) {
+				if( StringManip::is_or_ends_with($field->name, array('telephone', 'tel', 'phone') ) ) {
 					$field->rules['phone'] = NULL;
 				}
 				
 				// if the column is named e.g. date_created, creation_date etc then set it to auto
-				if( $field->type == 'Timestamp' && Text::contains($field->name, array('creation', 'created', 'added') ) ) {
+				if( $field->type == 'Timestamp' && StringManip::contains($field->name, array('creation', 'created', 'added') ) ) {
 					$field->options['auto_now_create'] = TRUE;
 				}
 				
-				if( $field->type == 'Timestamp' && Text::contains($field->name, array('edited', 'modified', 'updated') ) ) {
+				if( $field->type == 'Timestamp' && StringManip::contains($field->name, array('edited', 'modified', 'updated') ) ) {
 					$field->options['auto_now_update'] = TRUE;
 				}
 				

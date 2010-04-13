@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
-<title>Jelly Forward-Engineered Models</title>
+<title>Jelly Reverse-Engineered Models</title>
 <style type="text/css">
 body {
 	font-family: sans-serif;
@@ -34,7 +34,7 @@ window.onload = function() {
 
 <h1>Jelly Models</h1>
 
-<?=Html::anchor('jellyforwardengineer/downloadModels', 'Download all models (jelly_models.zip)');?> 
+<?=Html::anchor('jellyreverseengineer/downloadModels', 'Download all models (jelly_models.zip)');?> 
 <small><em>Requires Archive module from <?=Html::anchor('http://github.com/zazu/kohana-archive');?></em></small>
 
 <div>
