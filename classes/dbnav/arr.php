@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class Arr extends Kohana_Arr {
+class DBNav_Arr extends Kohana_Arr {
 
 	public static function write($arr, $recursive = FALSE) {
 		if( !is_array($arr) ) return self::nulltruefalse($arr);
